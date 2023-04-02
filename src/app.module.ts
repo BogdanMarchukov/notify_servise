@@ -4,6 +4,8 @@ import { NotifyModule } from './modules/notify/notify.module';
 import databaseConfig from './config/database.config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Player } from './models/Players.model';
+import { Notification } from './models/Notification.modle';
+import { UserNotification } from './models/UsersNotification.model';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Player } from './models/Players.model';
         username: 'root',
         password: 'password',
         database: 'notify',
-        models: [Player],
+        models: [Player, Notification, UserNotification],
       }),
       inject: [ConfigService],
     }),
