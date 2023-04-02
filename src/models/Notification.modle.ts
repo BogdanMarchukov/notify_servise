@@ -10,6 +10,7 @@ import {
   Table,
   UpdatedAt,
 } from 'sequelize-typescript';
+import { BaseModel } from './Base.model';
 
 enum NotificationStatus {
   Pending = 'pending',
@@ -17,22 +18,11 @@ enum NotificationStatus {
 }
 
 @Table({ tableName: 'notifications', modelName: 'notification' })
-export class Notification extends Model<Notification> {
-  @IsUUID(4)
-  @PrimaryKey
-  @Default(DataType.UUIDV4)
-  @Column(DataType.UUID)
-  id: number;
+export class Notification extends BaseModel<Notification> {
   @Column
   template: string;
 
-  @Column
   @IsIn([[NotificationStatus.Pending, NotificationStatus.Complete]])
+  @Column(DataType.STRING)
   status: NotificationStatus;
-
-  @CreatedAt
-  createdAt: Date;
-
-  @UpdatedAt
-  updatedAt: Date;
 }

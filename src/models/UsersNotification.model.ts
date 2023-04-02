@@ -16,8 +16,8 @@ export enum NotificationStatus {
 }
 @Table({ tableName: 'user_notification', modelName: 'user_notifications' })
 export class UserNotification extends BaseModel<UserNotification> {
-  @Column
   @IsIn([[NotificationStatus.Pending, NotificationStatus.Complete]])
+  @Column(DataType.STRING)
   status: NotificationStatus;
 
   @BelongsTo(() => Notification, 'notificationId')
@@ -28,9 +28,9 @@ export class UserNotification extends BaseModel<UserNotification> {
   notificationId: string;
 
   @BelongsTo(() => Player, 'playerId')
-  playerId: Player;
+  player: Player;
 
   @ForeignKey(() => Player)
   @Column(DataType.INTEGER)
-  Player: string;
+  playerId: number;
 }
