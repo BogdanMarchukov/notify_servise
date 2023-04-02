@@ -19,6 +19,9 @@ module.exports = {
           createdAt: {
             type: Sequelize.DATE,
           },
+          updatedAt: {
+            type: Sequelize.DATE,
+          },
         },
         { transaction },
       );
@@ -64,10 +67,12 @@ module.exports = {
         if (!fakeFirstNames[nameIndex]) {
           nameIndex = 0;
         }
+        const date = randomDate(new Date(2020, 0, 1), new Date());
         playersData.push({
           id: i,
           first_name: fakeFirstNames[nameIndex],
-          createdAt: randomDate(new Date(2020, 0, 1), new Date()),
+          createdAt: date,
+          updatedAt: date,
         });
         nameIndex++;
       }
