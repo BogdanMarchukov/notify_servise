@@ -8,6 +8,7 @@ export class NotifyController {
   @Post('send')
   async sendNotify(@Body(new ValidationPipe()) body: NotifyDto) {
     let { template } = body;
+    await this.notifyService.notifySender(template);
     const users = await this.notifyService.getUsers(0, 10);
     console.log(users);
     template = this.notifyService.findNameAndReplace(template, 'bogdan');
