@@ -13,13 +13,14 @@ import { Player } from './models/Players.model';
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
+      // TODO configuration service is not running. To fix
       useFactory: (configService: ConfigService) => ({
         dialect: 'mysql',
-        host: configService.get('host'),
-        port: +configService.get('port'),
-        username: configService.get('username'),
-        password: configService.get('password'),
-        database: configService.get('database'),
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: 'password',
+        database: 'notify',
         models: [Player],
       }),
       inject: [ConfigService],
