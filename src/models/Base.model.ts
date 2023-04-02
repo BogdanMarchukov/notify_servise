@@ -14,7 +14,7 @@ export class BaseModel<T> extends Model<T> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column(DataType.UUID)
-  id: number;
+  id: string;
   @Column
   @CreatedAt
   createdAt: Date;
