@@ -10,8 +10,8 @@ export class NotifyService {
   async getUsers(offset: number, limit: number) {
     return await Player.findAll({
       limit,
+      offset,
       order: [['first_name', 'ASC']],
-      logging: true,
     });
   }
 }
