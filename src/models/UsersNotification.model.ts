@@ -14,7 +14,7 @@ export enum NotificationStatus {
   Pending = 'pending',
   Complete = 'complete',
 }
-@Table({ tableName: 'user_notification', modelName: 'user_notifications' })
+@Table({ tableName: 'user_notifications', modelName: 'user_notification' })
 export class UserNotification extends BaseModel<UserNotification> {
   @IsIn([[NotificationStatus.Pending, NotificationStatus.Complete]])
   @Column(DataType.STRING)
