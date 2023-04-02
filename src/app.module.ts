@@ -6,6 +6,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Player } from './models/Players.model';
 import { Notification } from './models/Notification.modle';
 import { UserNotification } from './models/UsersNotification.model';
+import { VkApiModule } from './modules/vk-api/vk-api.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserNotification } from './models/UsersNotification.model';
       inject: [ConfigService],
     }),
     NotifyModule,
+    VkApiModule,
   ],
 })
 export class AppModule {}
