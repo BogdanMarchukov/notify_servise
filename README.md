@@ -31,10 +31,14 @@
 ```bash
 $ npm install
 ```
+## Config
+```src/config```
+```src/app.module.ts```
 
 ## Running the app
 
 ```bash
+$ npm run db:migrate
 # development
 $ npm run start
 
