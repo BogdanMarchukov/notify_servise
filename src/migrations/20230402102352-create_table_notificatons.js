@@ -41,6 +41,13 @@ module.exports = {
           model: 'notifications',
         },
       },
+      playerId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'players',
+        },
+      },
       createdAt: {
         type: Sequelize.DATE,
       },
@@ -52,8 +59,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('notifications');
     await queryInterface.dropTable('user_notifications');
-    await queryInterface.removeIndex('notifications', ['status']);
+    await queryInterface.dropTable('notifications');
   },
 };

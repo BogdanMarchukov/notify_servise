@@ -1,8 +1,16 @@
-import { BelongsTo, Column, DataType, ForeignKey, IsIn, Table } from "sequelize-typescript";
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  IsIn,
+  Table,
+} from 'sequelize-typescript';
 import { BaseModel } from './Base.model';
-import { Notification } from '../models/Notification.modle';
+import { Notification } from './Notification.modle';
+import { Player } from './Players.model';
 
-enum NotificationStatus {
+export enum NotificationStatus {
   Pending = 'pending',
   Complete = 'complete',
 }
@@ -18,4 +26,11 @@ export class UserNotification extends BaseModel<UserNotification> {
   @ForeignKey(() => Notification)
   @Column(DataType.UUID)
   notificationId: string;
+
+  @BelongsTo(() => Player, 'playerId')
+  playerId: Player;
+
+  @ForeignKey(() => Player)
+  @Column(DataType.INTEGER)
+  Player: string;
 }
